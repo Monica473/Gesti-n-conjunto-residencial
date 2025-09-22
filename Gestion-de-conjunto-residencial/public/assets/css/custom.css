@@ -1,0 +1,474 @@
+/* public/assets/css/custom.css */
+
+/* 1. Imports y Configuración General */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --gradient: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+    --text-color: #495057;
+    --border-radius: 12px;
+    --box-shadow: 0 4px
+ 15px rgba(0, 0, 0, 0.08);
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+/* 2. Layout Principal y Cabecera */
+.main-container {
+    flex: 1 0 auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Centrado para páginas sin sesión (login, register) */
+.main-container:not(.dashboard) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-bar {
+    background: var(--gradient);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-bar .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-bar .logo-container img {
+    height: 50px;
+    border-radius: 50%;
+}
+
+.header-bar .logo-container .logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 1rem;
+    color: white;
+}
+
+.header-bar .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-bar .user-info .profile-pic {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    transition: transform 0.2s ease-in-out;
+}
+
+.header-bar .user-info .profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* 3. Formularios, Tarjetas y Botones */
+.form-container {
+    max-width: 480px;
+    margin: auto;
+    padding-top: 3rem;
+}
+
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.card-header {
+    background: var(--gradient);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 0;
+}
+
+.card-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25);
+}
+
+.btn, .btn-submit, .btn-delete, .btn-edit, .btn-view, .btn-action {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease-in-out; /* Transición más suave para todas las propiedades */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover, .btn-submit:hover, .btn-delete:hover, .btn-edit:hover, .btn-view:hover, .btn-action:hover {
+    transform: translateY(-3px) scale(1.03); /* Efecto de elevación y ligero zoom */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+.btn:active, .btn-submit:active, .btn-delete:active, .btn-edit:active, .btn-view:active, .btn-action:active {
+    transform: translateY(1px) scale(0.98); /* Efecto de presión */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.btn-primary {
+    background: var(--gradient);
+    color: white;
+    border: 0;
+}
+
+.btn-primary:hover {
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 117, 252, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: var(--gradient);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.link-primary {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+.link-primary:hover {
+    text-decoration: underline;
+}
+
+/* 4. Estilos de Páginas Específicas */
+
+/* ver_foto.php */
+.photo-view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.photo-view-container .foto-grande {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: var(--box-shadow), 0 0 0 6px var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+/* dashboard.php */
+.dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* profile.php */
+.profile-form .profile-pic-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-form .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.profile-form .profile-pic:hover {
+    transform: scale(1.05);
+}
+
+/* Tablas (users.php, my_records.php) */
+.table-container {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.table {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.table thead {
+    background: var(--gradient);
+    color: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Dashboard & Header Styles */
+.header {
+    background-color: #ffffff;
+    padding: 0.75rem 2rem; /* Padding lateral reajustado */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; /* Añadido para forzar el ancho completo */
+    z-index: 1000;
+}
+
+.header .logo {
+    height: 55px; /* Aumentado de 45px a 55px */
+}
+
+.header .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--dark-gray);
+}
+
+.header .profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.header .profile-pic:hover {
+    transform: scale(1.1);
+}
+
+.header .dropdown-menu {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: none;
+}
+
+.header .btn-submit {
+    background: transparent;
+    border: 1px solid #ced4da;
+    color: var(--text-color);
+    font-weight: 500;
+    box-shadow: none;
+}
+
+.header .btn-submit:hover {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+    transform: none;
+}
+
+.main-container.dashboard {
+    padding-top: 150px; /* Aumentado para bajarlo un poco desde el borde superior */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alineado arriba en lugar de centrado */
+    width: 100%;
+    flex-grow: 1; /* Asegura que ocupe el espacio disponible */
+}
+
+.dashboard-card {
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+    user-select: none;
+}
+
+.dashboard-card h2, .dashboard-card p {
+    user-select: text;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.quick-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-outline-dark {
+    background-color: #f8f9fa;
+    color: #343a40;
+    border: 1px solid #dee2e6;
+}
+
+.btn-outline-dark:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+/* Centrado alto para páginas de registro y mis registros */
+.content-high-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 80vh;
+    padding-top: 2rem; /* Ajusta este valor para subir o bajar el bloque */
+}
+
+/* Curva y armonía para el cuadro de Mis Registros */
+.users-card.records-centered {
+    border-radius: 38px !important;
+    margin: 0 auto;
+    box-shadow: var(--box-shadow);
+    background: #fff;
+    padding: 2.8rem 2.2rem 2.5rem 2.2rem;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    transition: border-radius 0.3s;
+}
+
+.users-card.records-centered .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: none;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+}
+
+.users-card.records-centered h1 {
+    margin-bottom: 0.2rem;
+    font-size: 2rem;
+}
+
+.users-card.records-centered .btn {
+    margin-bottom: 0.8rem;
+}
+
+.users-card.records-centered .mb-3 {
+    margin-bottom: 1.2rem !important;
+    text-align: center;
+}
+
+.users-card.records-centered .table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-top: 1.2rem;
+}
+
+.users-card.records-centered th, .users-card.records-centered td {
+    text-align: center;
+    border: 1px solid #bbb;
+    vertical-align: middle;
+}
+
+.users-card.records-centered th {
+    background: var(--gradient);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.08rem;
+}
+
+/* 5. Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+    background-color: #e9ecef;
+    flex-shrink: 0;
+}
